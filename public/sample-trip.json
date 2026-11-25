@@ -1,0 +1,216 @@
+{
+  "version": 1,
+  "title": "Pacific Coast Highway",
+  "subtitle": "San Francisco → Los Angeles",
+  "emoji": "🌊",
+  "coverImage": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad",
+  "startDate": "2027-04-10",
+  "endDate": "2027-04-12",
+  "travelers": ["Andres", "Wife"],
+  "currency": "USD",
+  "summary": "Three slow days down Highway 1: sea cliffs in Big Sur, elephant seals, Santa Barbara wine and a sunset finish in Santa Monica.",
+  "tags": ["coast", "scenic drive", "food"],
+  "budget": { "total": 1400 },
+  "days": [
+    {
+      "date": "2027-04-10",
+      "title": "Fog, cliffs & Carmel",
+      "summary": "Leave the city early and ease into coast mode with tide pools and a cozy Carmel dinner.",
+      "from": "San Francisco, CA",
+      "to": "Carmel-by-the-Sea, CA",
+      "distanceKm": 195,
+      "driveHours": 3,
+      "stops": [
+        {
+          "time": "08:00",
+          "title": "Breakfast at Tartine Manufactory",
+          "type": "food",
+          "description": "Morning buns and coffee before hitting the road.",
+          "location": { "lat": 37.7618, "lng": -122.4115, "address": "595 Alabama St, San Francisco" },
+          "durationMin": 45,
+          "cost": 35
+        },
+        {
+          "time": "10:30",
+          "title": "Pigeon Point Lighthouse",
+          "type": "photo",
+          "description": "One of the tallest lighthouses on the West Coast, right on the cliffs.",
+          "location": { "lat": 37.1817, "lng": -122.3942 },
+          "durationMin": 30,
+          "tips": "Walk to the north side of the parking lot for the classic shot."
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch on Santa Cruz Wharf",
+          "type": "food",
+          "location": { "lat": 36.9583, "lng": -122.0177 },
+          "durationMin": 60,
+          "cost": 50
+        },
+        {
+          "time": "15:30",
+          "title": "17-Mile Drive",
+          "type": "drive",
+          "description": "Scenic loop through Pebble Beach — Lone Cypress, Bird Rock and crashing surf.",
+          "location": { "lat": 36.5687, "lng": -121.9495 },
+          "durationMin": 90,
+          "cost": 12,
+          "tips": "Pay the toll at the Pacific Grove gate."
+        },
+        {
+          "time": "19:00",
+          "title": "Dinner at La Bicyclette",
+          "type": "food",
+          "location": { "lat": 36.5558, "lng": -121.9227, "address": "Dolores St & 7th Ave, Carmel" },
+          "cost": 110
+        }
+      ],
+      "stay": {
+        "name": "Carmel Country Inn",
+        "address": "Dolores St & 3rd Ave, Carmel-by-the-Sea, CA",
+        "location": { "lat": 36.5578, "lng": -121.9228 },
+        "checkIn": "15:00",
+        "checkOut": "11:00",
+        "cost": 280
+      }
+    },
+    {
+      "date": "2027-04-11",
+      "title": "Big Sur, the main event",
+      "summary": "The most dramatic stretch of coastline in California. No signal for long stretches — download maps!",
+      "from": "Carmel-by-the-Sea, CA",
+      "to": "San Luis Obispo, CA",
+      "distanceKm": 220,
+      "driveHours": 4.5,
+      "stops": [
+        {
+          "time": "09:00",
+          "title": "Bixby Creek Bridge",
+          "type": "photo",
+          "whyVisit": "The most photographed spot on Highway 1, and the gateway to Big Sur.",
+          "about": "A 1932 concrete arch bridge spanning a 280-ft-deep canyon where the creek meets the Pacific.",
+          "highlights": ["North-side pullout for the postcard shot", "Old Coast Road dirt track view"],
+          "location": { "lat": 36.3715, "lng": -121.9017 },
+          "durationMin": 20
+        },
+        {
+          "time": "10:00",
+          "title": "Fuel up in Big Sur Village",
+          "type": "fuel",
+          "location": { "lat": 36.2704, "lng": -121.8081 },
+          "tips": "Last reasonably priced gas for ~100 km."
+        },
+        {
+          "time": "11:00",
+          "title": "McWay Falls",
+          "type": "nature",
+          "whyVisit": "One of the only waterfalls in the world that pours straight onto an ocean beach.",
+          "about": "An 80-ft waterfall in Julia Pfeiffer Burns State Park that drops into a turquoise cove. The beach itself is off-limits, which keeps it untouched.",
+          "description": "Walk the short Overlook Trail for the classic view, then sit on the bench and take it in.",
+          "highlights": ["Overlook Trail viewpoint", "Ruins of the Waterfall House", "Whale spotting in season"],
+          "openingHours": "Sunrise to sunset",
+          "location": { "lat": 36.1578, "lng": -121.6722 },
+          "durationMin": 45,
+          "cost": 10
+        },
+        {
+          "time": "13:00",
+          "title": "Lunch at Nepenthe",
+          "type": "food",
+          "whyVisit": "Lunch 800 ft above the ocean at a Big Sur institution since 1949.",
+          "about": "A family-run restaurant on land once owned by Orson Welles and Rita Hayworth, famous for its cliffside terrace.",
+          "highlights": ["Ambrosia burger", "Terrace at sunset", "Café Kevah downstairs for coffee"],
+          "location": { "lat": 36.2207, "lng": -121.7591 },
+          "durationMin": 75,
+          "cost": 80,
+          "tips": "Ask for a terrace table — the view is the whole point."
+        },
+        {
+          "time": "15:30",
+          "title": "Elephant Seal Vista Point",
+          "type": "nature",
+          "location": { "lat": 35.6629, "lng": -121.2575 },
+          "durationMin": 30
+        },
+        {
+          "time": "16:30",
+          "title": "Hearst Castle",
+          "type": "sight",
+          "whyVisit": "A jaw-dropping hilltop palace built by the newspaper tycoon William Randolph Hearst.",
+          "about": "A 165-room estate filled with European art and antiques, built between 1919 and 1947 and now a state historic park.",
+          "highlights": ["Neptune Pool", "Indoor Roman Pool", "Zebras grazing along the highway below"],
+          "openingHours": "9:00–17:00",
+          "bookingRequired": true,
+          "location": { "lat": 35.6852, "lng": -121.1682 },
+          "durationMin": 120,
+          "cost": 60,
+          "optional": true,
+          "url": "https://hearstcastle.org"
+        }
+      ],
+      "stay": {
+        "name": "Madonna Inn",
+        "kind": "hotel",
+        "about": "A kitschy, pink, one-of-a-kind roadside icon since 1958 — every room has its own wild theme.",
+        "address": "100 Madonna Rd, San Luis Obispo, CA",
+        "location": { "lat": 35.2676, "lng": -120.6765 },
+        "checkIn": "16:00",
+        "checkOut": "11:00",
+        "cost": 260,
+        "notes": "Famously wild themed rooms. Grab pink champagne cake at the bakery."
+      }
+    },
+    {
+      "date": "2027-04-12",
+      "title": "Wine country to Santa Monica",
+      "from": "San Luis Obispo, CA",
+      "to": "Santa Monica, CA",
+      "distanceKm": 310,
+      "driveHours": 4,
+      "stops": [
+        {
+          "time": "09:30",
+          "title": "Coffee at Scout Coffee",
+          "type": "coffee",
+          "location": { "lat": 35.2795, "lng": -120.6631 },
+          "cost": 14
+        },
+        {
+          "time": "12:00",
+          "title": "Santa Barbara Funk Zone",
+          "type": "activity",
+          "whyVisit": "The most fun way to taste Santa Barbara wine without driving to the vineyards.",
+          "about": "A few walkable blocks of old warehouses turned into wine tasting rooms, breweries, galleries and street art.",
+          "description": "Wander, taste a couple of local wines, and grab tacos a block from the beach.",
+          "highlights": ["Urban Wine Trail tasting rooms", "Lucky Penny pizza", "Stearns Wharf at the end"],
+          "location": { "lat": 34.4141, "lng": -119.6886 },
+          "durationMin": 150,
+          "cost": 90
+        },
+        {
+          "time": "17:30",
+          "title": "Sunset at Santa Monica Pier",
+          "type": "beach",
+          "location": { "lat": 34.0094, "lng": -118.4973 },
+          "durationMin": 90,
+          "tips": "Park at Lot 1 North, then walk the beach path."
+        }
+      ]
+    }
+  ],
+  "checklist": [
+    { "text": "Driver's licenses", "category": "Documents" },
+    { "text": "Car insurance card", "category": "Documents" },
+    { "text": "Download offline maps for Big Sur", "category": "Tech" },
+    { "text": "Phone mount + charging cable", "category": "Tech" },
+    { "text": "Road trip playlist", "category": "Tech" },
+    { "text": "Check tire pressure", "category": "Car" },
+    { "text": "Layers & a windbreaker", "category": "Clothes" },
+    { "text": "Comfortable hiking shoes", "category": "Clothes" },
+    { "text": "Sunscreen", "category": "Essentials" },
+    { "text": "Reusable water bottles", "category": "Essentials" },
+    { "text": "Book Hearst Castle tour", "category": "Bookings" }
+  ],
+  "contacts": [{ "name": "Roadside assistance", "phone": "+1-800-222-4357", "note": "AAA" }],
+  "links": [{ "label": "Caltrans road conditions (Hwy 1)", "url": "https://quickmap.dot.ca.gov" }]
+}

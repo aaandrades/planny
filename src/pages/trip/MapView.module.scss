@@ -1,0 +1,132 @@
+@use '../../styles/mixins' as *;
+
+.wrap {
+  @include enter(0ms, 400ms);
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  margin: 0 calc(var(--page-x) * -1) 14px;
+  padding: 0 var(--page-x);
+  overflow-x: auto;
+  @include hide-scrollbar;
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: var(--radius-pill);
+    background: var(--surface);
+    border: 1.5px solid var(--line);
+    font-size: 0.85rem;
+    font-weight: 650;
+    @include pressable;
+
+    i {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--c);
+    }
+
+    span {
+      color: var(--ink-3);
+      font-weight: 600;
+    }
+  }
+
+  .active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--sand);
+
+    span {
+      color: inherit;
+      opacity: 0.7;
+    }
+  }
+}
+
+.map {
+  height: calc(100dvh - 260px);
+  min-height: 380px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--surface);
+  isolation: isolate;
+
+  :global(.leaflet-popup-content-wrapper) {
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+  }
+
+  :global(.leaflet-control-zoom) {
+    border: 0 !important;
+    box-shadow: var(--shadow-sm) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+  }
+}
+
+// Soften OSM's busy colors to sit with our palette; invert into a night map in dark mode.
+.tiles {
+  filter: saturate(0.75) contrast(0.95);
+
+  @include dark {
+    filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.88) saturate(0.55);
+  }
+}
+
+.pin {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c);
+  color: #fff;
+  font: 800 13px/1 var(--font-body);
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.3);
+}
+
+.pinStay {
+  border-radius: 10px;
+}
+
+.pinDone {
+  opacity: 0.55;
+}
+
+.popup {
+  display: grid;
+  gap: 2px;
+  font-family: var(--font-body);
+
+  small {
+    color: #6a6158;
+    font-weight: 600;
+  }
+
+  strong {
+    font-size: 0.95rem;
+  }
+
+  a {
+    margin-top: 6px;
+    color: #ff5b2e !important;
+    font-weight: 700;
+  }
+}
+
+.empty {
+  margin-top: 12px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  text-align: center;
+}

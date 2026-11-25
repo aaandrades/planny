@@ -1,0 +1,22 @@
+.avatar {
+  display: inline-grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  user-select: none;
+}
+
+.ring {
+  box-shadow: 0 0 0 2.5px var(--surface);
+}
+
+.stack {
+  display: inline-flex;
+
+  > * + * {
+    margin-left: -8px;
+  }
+}

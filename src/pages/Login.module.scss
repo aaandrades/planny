@@ -1,0 +1,222 @@
+@use '../styles/mixins' as *;
+
+.page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--sand);
+}
+
+.scene {
+  position: relative;
+  flex: 1;
+  min-height: 42dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, #ffb36b 0%, #ff7a45 45%, #e8366b 100%);
+}
+
+.themeCorner {
+  position: fixed;
+  top: calc(var(--safe-top) + 14px);
+  right: var(--page-x);
+  z-index: 5;
+}
+
+.sun {
+  position: absolute;
+  left: 50%;
+  bottom: 18%;
+  width: 46vmin;
+  height: 46vmin;
+  margin-left: -23vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffe9a8 0%, #ffd166 60%, #ffb84d 100%);
+  box-shadow: 0 0 120px 40px rgb(255 209 102 / 0.45);
+  animation: rise 2.2s var(--ease-out) both;
+}
+
+.hill {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  border-radius: 50% 50% 0 0;
+}
+
+.hill1 {
+  bottom: -8%;
+  height: 40%;
+  background: #0f5f56;
+  transform: rotate(-3deg);
+}
+
+.hill2 {
+  bottom: -14%;
+  height: 34%;
+  background: #0b4740;
+  left: 30%;
+  transform: rotate(4deg);
+}
+
+.road {
+  position: absolute;
+  left: 50%;
+  bottom: -2%;
+  width: 34%;
+  height: 30%;
+  transform: translateX(-50%);
+  background: #1d1a17;
+  clip-path: polygon(46% 0, 54% 0, 100% 100%, 0 100%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(180deg, #ffd166 0 10%, transparent 10% 22%);
+    clip-path: polygon(49.5% 0, 50.5% 0, 52% 100%, 48% 100%);
+    animation: drive 1.2s linear infinite;
+    background-size: 100% 200%;
+  }
+}
+
+.card {
+  position: relative;
+  margin-top: -32px;
+  padding: 32px var(--page-x) calc(28px + var(--safe-bottom));
+  background: var(--sand);
+  border-radius: 32px 32px 0 0;
+  display: flex;
+  flex-direction: column;
+  @include enter(200ms);
+
+  @include md {
+    width: 440px;
+    margin: -120px auto 48px;
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
+    background: var(--surface);
+  }
+}
+
+.brand {
+  @include display(3rem);
+}
+
+.tagline {
+  color: var(--ink-2);
+  margin-top: 6px;
+  font-size: 1.05rem;
+}
+
+.label {
+  margin-top: 28px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+.users {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  overflow-x: auto;
+  @include hide-scrollbar;
+}
+
+.user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 96px;
+  padding: 16px 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  font-weight: 650;
+  @include pressable;
+}
+
+.selected {
+  border-color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+
+.pinWrap {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  opacity: 0.35;
+  transition: opacity 300ms ease;
+}
+
+.pinVisible {
+  opacity: 1;
+}
+
+.pin {
+  height: 58px;
+  padding: 0 20px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+  outline: none;
+  transition: border-color 200ms ease;
+
+  &:focus {
+    border-color: var(--sunset);
+  }
+
+  &::placeholder {
+    letter-spacing: 0.1em;
+    font-size: 1rem;
+    color: var(--ink-3);
+  }
+}
+
+.shake {
+  animation: shake 400ms ease;
+  border-color: #d92d20;
+}
+
+.error {
+  color: #d92d20;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.hint {
+  margin-top: 24px;
+  color: var(--ink-2);
+
+  code {
+    background: var(--surface-2);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.88em;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(60%);
+  }
+}
+@keyframes drive {
+  to {
+    background-position: 0 100%;
+  }
+}
+@keyframes shake {
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}

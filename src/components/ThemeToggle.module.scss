@@ -1,0 +1,48 @@
+@use '../styles/mixins' as *;
+
+.toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  @include pressable;
+}
+
+.plain {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--ink);
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+.glass {
+  width: 42px;
+  height: 42px;
+  color: #1d1a17;
+  background: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-sm);
+}
+
+.icon {
+  grid-area: 1 / 1;
+  display: grid;
+  transition:
+    transform 450ms var(--ease-spring),
+    opacity 250ms ease;
+}
+
+.hidden {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}

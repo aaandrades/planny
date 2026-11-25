@@ -1,0 +1,204 @@
+@use '../../styles/mixins' as *;
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+  @include enter;
+
+  > div {
+    flex: 1;
+  }
+
+  h2 {
+    @include display(1.9rem);
+  }
+
+  p {
+    color: var(--ink-2);
+    margin-top: 2px;
+  }
+}
+
+.toggle {
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--ink-2);
+  padding: 8px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.ring {
+  flex-shrink: 0;
+  transform: rotate(-90deg);
+
+  text {
+    transform: rotate(90deg);
+    transform-origin: center;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 750;
+    fill: var(--ink);
+  }
+}
+
+.ringTrack {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 7;
+}
+
+.ringValue {
+  fill: none;
+  stroke: var(--pine);
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 600ms var(--ease-out);
+}
+
+.add {
+  display: flex;
+  gap: 8px;
+  padding: 6px;
+  margin-bottom: 24px;
+  @include card;
+
+  input {
+    flex: 1;
+    min-width: 0;
+    height: 44px;
+    padding: 0 12px;
+    border: 0;
+    background: transparent;
+    outline: none;
+  }
+}
+
+.cat {
+  flex: 0 0 110px !important;
+  border-left: 1px solid var(--line) !important;
+  font-size: 0.9rem;
+}
+
+.addBtn {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  color: #fff;
+  background: var(--cta);
+  @include pressable;
+
+  &:disabled {
+    opacity: 0.45;
+  }
+}
+
+.group {
+  margin-bottom: 22px;
+  @include enter(60ms, 450ms);
+
+  h3 {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin: 0 4px 10px;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    @include card;
+    overflow: hidden;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+
+    & + li {
+      border-top: 1px solid var(--line);
+    }
+  }
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+  padding: 14px 4px 14px 16px;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
+  border: 2px solid var(--line);
+  color: transparent;
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 300ms var(--ease-spring);
+}
+
+.text {
+  flex: 1;
+  min-width: 0;
+  font-weight: 550;
+  transition: color 200ms ease;
+}
+
+.by {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pine);
+}
+
+.remove {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 6px;
+  border-radius: 50%;
+  color: var(--ink-3);
+  opacity: 0.6;
+
+  &:hover {
+    opacity: 1;
+    background: var(--surface-2);
+  }
+}
+
+.done {
+  .box {
+    background: var(--pine);
+    border-color: var(--pine);
+    color: #fff;
+    transform: scale(1.06);
+  }
+
+  .text {
+    color: var(--ink-3);
+    text-decoration: line-through;
+  }
+}

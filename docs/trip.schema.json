@@ -1,0 +1,443 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://planny.app/trip.schema.json",
+  "title": "Planny trip (v1)",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 1,
+      "default": 1,
+      "description": "Format version. Always 1."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Trip name, e.g. \"Pacific Coast Highway\""
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Short route line, e.g. \"San Francisco → Los Angeles\""
+    },
+    "emoji": {
+      "type": "string",
+      "description": "One emoji that captures the trip"
+    },
+    "coverImage": {
+      "type": "string",
+      "description": "Direct https image URL for the cover (images.unsplash.com preferred)"
+    },
+    "startDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "First day \"YYYY-MM-DD\""
+    },
+    "endDate": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Last day \"YYYY-MM-DD\""
+    },
+    "travelers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Names of the people traveling"
+    },
+    "currency": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 3,
+      "default": "USD",
+      "description": "ISO 4217 currency code for all costs, e.g. \"EUR\""
+    },
+    "summary": {
+      "type": "string",
+      "description": "2–3 sentence overview of the whole trip"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Short themes, e.g. [\"coast\", \"wine\", \"national parks\"]"
+    },
+    "budget": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total budget for the trip"
+        }
+      },
+      "additionalProperties": false
+    },
+    "days": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Calendar date \"YYYY-MM-DD\". One day object per date."
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Catchy title for the day, e.g. \"Big Sur, the main event\""
+          },
+          "summary": {
+            "type": "string",
+            "description": "2–3 sentences on the vibe and the plan for the day"
+          },
+          "from": {
+            "type": "string",
+            "description": "Where the day starts, e.g. \"Carmel-by-the-Sea, CA\""
+          },
+          "to": {
+            "type": "string",
+            "description": "Where the day ends"
+          },
+          "distanceKm": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Total driving distance for the day, km"
+          },
+          "driveHours": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Total pure driving time, decimal hours (e.g. 3.5)"
+          },
+          "image": {
+            "type": "string",
+            "description": "Direct https image URL representing the day (optional)"
+          },
+          "stops": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "time": {
+                  "type": "string",
+                  "pattern": "^\\d{1,2}:\\d{2}$",
+                  "description": "Planned arrival time, 24h \"HH:MM\""
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Name of the place or activity, e.g. \"McWay Falls\""
+                },
+                "type": {
+                  "type": "string",
+                  "enum": [
+                    "drive",
+                    "food",
+                    "coffee",
+                    "sight",
+                    "activity",
+                    "nature",
+                    "beach",
+                    "shopping",
+                    "fuel",
+                    "rest",
+                    "photo",
+                    "stay",
+                    "other"
+                  ],
+                  "default": "other",
+                  "description": "Category used for the icon and color. Unknown values become \"other\"."
+                },
+                "description": {
+                  "type": "string",
+                  "description": "What WE will do here, in 1–2 sentences: the plan for this stop."
+                },
+                "about": {
+                  "type": "string",
+                  "description": "What this place IS, in 1–3 sentences: context, history, what makes it unique."
+                },
+                "whyVisit": {
+                  "type": "string",
+                  "description": "Why it is worth stopping, in one persuasive sentence. The hook shown on the card."
+                },
+                "highlights": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "2–5 specific things not to miss: a dish, a viewpoint, a trail, an exhibit…"
+                },
+                "tips": {
+                  "type": "string",
+                  "description": "Insider advice: parking, best time of day, what to bring, crowds…"
+                },
+                "location": {
+                  "type": "object",
+                  "properties": {
+                    "lat": {
+                      "type": "number",
+                      "minimum": -90,
+                      "maximum": 90,
+                      "description": "Latitude in decimal degrees, e.g. 36.1578"
+                    },
+                    "lng": {
+                      "type": "number",
+                      "minimum": -180,
+                      "maximum": 180,
+                      "description": "Longitude in decimal degrees, e.g. -121.6722"
+                    },
+                    "address": {
+                      "type": "string",
+                      "description": "Human-readable street address or area name"
+                    }
+                  },
+                  "required": [
+                    "lat",
+                    "lng"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Exact coordinates of the place. Powers the map and the Navigate buttons."
+                },
+                "durationMin": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Expected time spent here, in minutes"
+                },
+                "cost": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Estimated total cost for the whole group, in the trip currency"
+                },
+                "openingHours": {
+                  "type": "string",
+                  "description": "Relevant opening hours, e.g. \"9:00–17:00, closed Mondays\""
+                },
+                "bookingRequired": {
+                  "type": "boolean",
+                  "description": "true if tickets or a reservation must be booked in advance"
+                },
+                "bookingRef": {
+                  "type": "string",
+                  "description": "Booking/confirmation number, only if already booked"
+                },
+                "url": {
+                  "type": "string",
+                  "description": "Official website (only if known to be real)"
+                },
+                "image": {
+                  "type": "string",
+                  "description": "Direct https image URL of the place (optional)"
+                },
+                "optional": {
+                  "type": "boolean",
+                  "description": "true for \"only if we have time\" stops"
+                }
+              },
+              "required": [
+                "title"
+              ],
+              "additionalProperties": false,
+              "description": "A place or activity during the day, listed in the order it happens."
+            },
+            "default": [],
+            "description": "Stops in chronological order"
+          },
+          "stay": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Name of the hotel / rental / campsite"
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "hotel",
+                  "motel",
+                  "apartment",
+                  "house",
+                  "hostel",
+                  "camping",
+                  "cabin",
+                  "other"
+                ],
+                "description": "Type of accommodation"
+              },
+              "about": {
+                "type": "string",
+                "description": "What this place is like and why it was chosen, in 1–2 sentences"
+              },
+              "address": {
+                "type": "string",
+                "description": "Full street address"
+              },
+              "location": {
+                "type": "object",
+                "properties": {
+                  "lat": {
+                    "type": "number",
+                    "minimum": -90,
+                    "maximum": 90,
+                    "description": "Latitude in decimal degrees, e.g. 36.1578"
+                  },
+                  "lng": {
+                    "type": "number",
+                    "minimum": -180,
+                    "maximum": 180,
+                    "description": "Longitude in decimal degrees, e.g. -121.6722"
+                  },
+                  "address": {
+                    "type": "string",
+                    "description": "Human-readable street address or area name"
+                  }
+                },
+                "required": [
+                  "lat",
+                  "lng"
+                ],
+                "additionalProperties": false,
+                "description": "Exact coordinates of the place. Powers the map and the Navigate buttons."
+              },
+              "checkIn": {
+                "type": "string",
+                "pattern": "^\\d{1,2}:\\d{2}$",
+                "description": "Check-in time, 24h \"HH:MM\""
+              },
+              "checkOut": {
+                "type": "string",
+                "pattern": "^\\d{1,2}:\\d{2}$",
+                "description": "Check-out time the next morning, 24h \"HH:MM\""
+              },
+              "confirmation": {
+                "type": "string",
+                "description": "Confirmation number, only if already booked"
+              },
+              "phone": {
+                "type": "string",
+                "description": "Phone number in international format"
+              },
+              "url": {
+                "type": "string",
+                "description": "Booking or official website"
+              },
+              "cost": {
+                "type": "number",
+                "minimum": 0,
+                "description": "Cost for this night, for the whole group"
+              },
+              "notes": {
+                "type": "string",
+                "description": "Parking, breakfast, door codes, anything useful"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false,
+            "description": "Where we sleep at the end of this day."
+          }
+        },
+        "required": [
+          "date",
+          "title"
+        ],
+        "additionalProperties": false,
+        "description": "One calendar day of the trip."
+      },
+      "minItems": 1,
+      "description": "Every calendar day from startDate to endDate, in order"
+    },
+    "checklist": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The item or to-do, e.g. \"International driving permit\""
+          },
+          "category": {
+            "type": "string",
+            "default": "General",
+            "description": "Group name, e.g. \"Documents\", \"Car\", \"Clothes\", \"Tech\", \"Bookings\", \"Health\""
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "default": [],
+      "description": "Packing list and to-dos before leaving (15–30 items)"
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Who, e.g. \"Roadside assistance\" or \"Hotel Seville\""
+          },
+          "phone": {
+            "type": "string",
+            "description": "Phone number in international format"
+          },
+          "note": {
+            "type": "string",
+            "description": "Short context"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "additionalProperties": false
+      },
+      "default": [],
+      "description": "Useful phone numbers"
+    },
+    "links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Link text"
+          },
+          "url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "https URL"
+          }
+        },
+        "required": [
+          "label",
+          "url"
+        ],
+        "additionalProperties": false
+      },
+      "default": [],
+      "description": "Useful websites: road conditions, park passes, bookings…"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free-form notes shared by the travelers"
+    }
+  },
+  "required": [
+    "title",
+    "startDate",
+    "endDate",
+    "days"
+  ],
+  "additionalProperties": false,
+  "description": "A Planny road trip plan."
+}

@@ -1,0 +1,20 @@
+.splash {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--sand);
+}
+
+.logo {
+  border-radius: 22px;
+  box-shadow: var(--shadow-md);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(0.92);
+    opacity: 0.8;
+  }
+}

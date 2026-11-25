@@ -1,0 +1,97 @@
+@use '../styles/mixins' as *;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  font-weight: 650;
+  white-space: nowrap;
+  user-select: none;
+  @include pressable;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.sm {
+  height: 34px;
+  padding: 0 14px;
+  font-size: 0.85rem;
+}
+.md {
+  height: 44px;
+  padding: 0 18px;
+  font-size: 0.95rem;
+}
+.lg {
+  height: 54px;
+  padding: 0 24px;
+  font-size: 1.02rem;
+}
+
+.block {
+  width: 100%;
+}
+
+.primary {
+  color: #fff;
+  background: var(--cta);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 1px 2px rgb(29 26 23 / 0.18);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--cta-hover);
+    }
+  }
+
+  &:active {
+    background: var(--cta-hover);
+  }
+}
+
+.secondary {
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--surface);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}
+
+.ghost {
+  background: transparent;
+
+  @media (hover: hover) {
+    &:hover {
+      background: var(--surface-2);
+    }
+  }
+}
+
+.dark {
+  background: var(--ink);
+  color: var(--sand);
+}
+
+.danger {
+  background: #fde8e6;
+  color: #b42318;
+
+  @include dark {
+    background: #3a1714;
+    color: #ff8a7a;
+  }
+}
